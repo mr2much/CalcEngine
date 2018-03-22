@@ -8,7 +8,6 @@ public class Addition extends Operation {
 
     @Override
     public void calculate() {
-        double value = getLeftVal() + getRightVal();
-        setResult(value);
+        setResult(getLeftVal() + getRightVal());
     }
 }
