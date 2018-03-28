@@ -11,16 +11,29 @@ public class CalculatorHelper {
     private double rightValue;
     private double result;
 
-    public void process(String statement) {
+    public void process(String statement) throws InvalidStatementException {
         // add 1.0 2.0
         String[] parts = statement.split(" ");
-        String operationString = parts[0];              // add
-        this.leftValue = Double.parseDouble(parts[1]);  // 1.0
-        this.rightValue = Double.parseDouble(parts[2]); // 2.0
 
+        if(parts.length != 3) {
+            throw new InvalidStatementException("Not enough parts", statement);
+        }
+
+        String operationString = parts[0];              // add
+
+        try {
+            this.leftValue = Double.parseDouble(parts[1]);  // 1.0
+            this.rightValue = Double.parseDouble(parts[2]); // 2.0
+        } catch (NumberFormatException ex) {
+            throw new InvalidStatementException("Non numeric data", statement, ex);
+        }
         setOperationFromString(operationString);
 
         Operation calculator = null;
+
+        if(operation == null) {
+            throw new InvalidStatementException("Invalid operation", statement);
+        }
 
         switch (operation) {
             case Add:
