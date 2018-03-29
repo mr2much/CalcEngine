@@ -1,4 +1,4 @@
-package com.lockward.anubis;
+package com.lockward.anubis.calcengine;
 
 public class InvalidStatementException extends Exception {
     public InvalidStatementException(String reason, String statement) {

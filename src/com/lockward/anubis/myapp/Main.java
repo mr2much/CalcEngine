@@ -1,4 +1,6 @@
-package com.lockward.anubis;
+package com.lockward.anubis.myapp;
+
+import com.lockward.anubis.calcengine.*;
 
 public class Main {
 
@@ -15,7 +17,7 @@ public class Main {
                 "subtract 225.0 17.0",  // 225.0 - 17.0 = 108.0
                 "multiply 11.0 3.0"     // 11.0 * 3.0 = 33.0
         };
-
+        
         CalculatorHelper helper = new CalculatorHelper();
 
         for (String statement : statements) {

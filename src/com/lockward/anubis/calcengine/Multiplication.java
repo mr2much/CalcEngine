@@ -1,4 +1,4 @@
-package com.lockward.anubis;
+package com.lockward.anubis.calcengine;
 
 public class Multiplication extends Operation {
 
