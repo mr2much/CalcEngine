@@ -1,6 +1,6 @@
 package com.lockward.anubis.calcengine;
 
-public abstract class Operation {
+public abstract class Operation implements MathProcessing {
     private double leftVal;
     private double rightVal;
     private double result;

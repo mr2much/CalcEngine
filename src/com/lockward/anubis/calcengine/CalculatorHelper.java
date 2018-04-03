@@ -27,6 +27,7 @@ public class CalculatorHelper {
         } catch (NumberFormatException ex) {
             throw new InvalidStatementException("Non numeric data", statement, ex);
         }
+
         setOperationFromString(operationString);
 
         Operation calculator = null;

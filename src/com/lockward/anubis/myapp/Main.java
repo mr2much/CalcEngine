@@ -7,30 +7,34 @@ public class Main {
     public static void main(String[] args) {
         //useMathEquation();
         //useCalculatorBase();
+        //userCalculatorHelper();
 
         String[] statements = {
                 "add 1.0",
                 "add xx 25.0",
                 "addX 0.0 0.0",
-                "divide 100.0 50.0",    // 100.0 / 50.0 = 2
-                "add 25.0 92.0",        // 25.0 + 92.0 = 117.0
-                "subtract 225.0 17.0",  // 225.0 - 17.0 = 108.0
-                "multiply 11.0 3.0"     // 11.0 * 3.0 = 33.0
+                "add 25.0 92.0",
+                "multiply 3.0 9.0",
+                "divide 25.0 5.0",
+                "subtract 39 13"
         };
-        
-        CalculatorHelper helper = new CalculatorHelper();
+
+        DynamicHelper helper = new DynamicHelper(new MathProcessing[]{
+                new Addition(), new Multiplication(), new Division(), new Subtraction()
+        });
 
         for (String statement : statements) {
             try {
-                helper.process(statement);
-                System.out.println(helper);
+                String output = helper.process(statement);
+                System.out.println(output);
             } catch (InvalidStatementException ex) {
                 System.out.println(ex.getMessage());
 
-                if(ex.getCause() != null) {
-                    System.out.println("    Original exception: " + ex.getCause().getMessage());
+                if (ex.getCause() != null) {
+                    System.out.println("    Original Exception: " + ex.getCause().getMessage());
                 }
             }
+
         }
     }
 
@@ -63,6 +67,33 @@ public class Main {
 
             System.out.print("The result is ");
             System.out.println(operation.getResult());
+        }
+    }
+
+    public static void useCalculatorHelper() {
+        String[] statements = {
+                "add 1.0",
+                "add xx 25.0",
+                "addX 0.0 0.0",
+                "divide 100.0 50.0",    // 100.0 / 50.0 = 2
+                "add 25.0 92.0",        // 25.0 + 92.0 = 117.0
+                "subtract 225.0 17.0",  // 225.0 - 17.0 = 108.0
+                "multiply 11.0 3.0"     // 11.0 * 3.0 = 33.0
+        };
+
+        CalculatorHelper helper = new CalculatorHelper();
+
+        for (String statement : statements) {
+            try {
+                helper.process(statement);
+                System.out.println(helper);
+            } catch (InvalidStatementException ex) {
+                System.out.println(ex.getMessage());
+
+                if(ex.getCause() != null) {
+                    System.out.println("    Original exception: " + ex.getCause().getMessage());
+                }
+            }
         }
     }
 
